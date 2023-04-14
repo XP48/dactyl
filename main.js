@@ -12,18 +12,36 @@ function nb_random(min, max) {
 }
 
 fetch('citations.json').then(reponse => reponse.json()).then(data => {
-    let citations = data[nb_random(0, data.length)]
-    let exo = citations.citation
-    let etapes = exo.split('')
-    
-    for (let nb = 0; nb < (etapes.length); nb++){
-        document.getElementById('sujet').innerHTML += `<span id='${nb}'>${etapes[nb]}</span>`
-    }
-    document.getElementById('sujet').innerHTML += `<p class="cit">”</p>`
+
+    let etapes = 0
     let nb_etape = 0
     let animationduration = 0.1
     let started = false
     let debut = 0
+
+    function display(nb_cita) {
+
+        nb_etape = 0
+        let citation = data[nb_cita]
+        let exo = citation.citation
+        etapes = exo.split('')
+
+    
+        document.getElementById('sujet').innerHTML = '<p class="cit">“</p>'
+        for (let nb = 0; nb < (etapes.length); nb++){
+            document.getElementById('sujet').innerHTML += `<span id='${nb}'>${etapes[nb]}</span>`
+        }
+        document.getElementById('cita-select').innerHTML = `<option value="">${citation.auteur}</option>`
+        for (let nb = 0; nb < data.length; nb++){
+            document.getElementById('cita-select').innerHTML += `<option value="${data[nb].auteur}">${data[nb].auteur}</option>`
+        }
+        document.getElementById('sujet').innerHTML += `<p class="cit">”</p>`
+        document.getElementById('infos').textContent = `${citation.auteur} | ${citation.taille} caractères.`
+
+        console.log(etapes)
+
+    }
+
     
     document.addEventListener('keydown', function(event) {
         console.log(event.keyCode)
@@ -31,6 +49,12 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
             debut = new Date()
             started = true
         }
+        if(event.keyCode !== keysByLetter[etapes[0]] && Object.values(keysByLetter).includes(event.keyCode) ){
+            document.getElementById('sujet').style.animation = `erreur ${animationduration}s linear 1`
+        }
+        document.getElementById("sujet").addEventListener("animationend", function() {
+            document.getElementById('sujet').style.animation = null;
+        });
         if(event.keyCode === keysByLetter[etapes[0]]){
             document.getElementById(`${nb_etape}`).style.color = '#f1f1f1'
             etapes.shift()
@@ -41,16 +65,22 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
             }
             nb_etape++
         }
-        else if(event.keyCode != keysByLetter[etapes[0]] && Object.values(keysByLetter).includes(event.keyCode) ){
-            document.getElementById('sujet').style.animation = `erreur ${animationduration}s linear 1`
-        }
-        document.getElementById("sujet").addEventListener("animationend", function() {
-            document.getElementById('sujet').style.animation = null;
-        });
+        console.log(keysByLetter[etapes[0]])
     });
     
+    display(nb_random(0, data.length))
+
+    
     document.addEventListener("input", function(event) {
-        document.getElementById("sujet").style.color = event.target.value;
+        if(event.target.name === "couleur-police") {
+            document.getElementById("sujet").style.color = event.target.value;            
+        }
+        if(event.target.name === "couleur-fond") {
+            document.getElementById("container").style.backgroundColor = event.target.value;    
+            document.getElementById("cita-select").style.backgroundColor = event.target.value; 
+        }
+        display(data.findIndex(elem => elem.auteur === event.target.value))
     });
 
 }).catch(error => console.log(error))
+
