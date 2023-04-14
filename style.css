@@ -31,12 +31,13 @@
     }
 }
 .phrase {
-    height: 80vh;
     width: 90vw;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    position: relative;
 }
 #sujet {
     color: #8e8e8e;
@@ -50,4 +51,18 @@
     right: 1%;
     background-color: transparent;
     border: none;
+}
+.cit {
+    font-family: black;
+    font-size: 150%;
+}
+.infos {
+    color: #8e8e8e;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+    font-weight: bold;
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
