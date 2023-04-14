@@ -31,7 +31,7 @@ document.addEventListener('keydown', function(event) {
         etapes.shift()
         if(etapes.length === 0){
             const fin = new Date()
-            const perf = (fin - debut)/3600
+            const perf = (fin - debut)/1000
             alert(`Vous avez mis ${perf}s !`)
         }
         nb_etape++
