@@ -1,53 +1,46 @@
 [
     {
         "citation": "La vie est un mystère qu'il faut vivre, et non un problème à résoudre.",
-        "auteur": "Gandhi",
-        "taille": 58
+        "auteur": "Gandhi"
     },
     {
         "citation": "La folie, c'est de faire toujours la meme chose et de s'attendre à un résultat différent.",
-        "auteur": "Albert Einstein",
-        "taille": 88
+        "auteur": "Albert Einstein"
     },
     {
         "citation": "On ne voit bien qu'avec le coeur. L'essentiel est invisible pour les yeux.",
-        "auteur": "Antoine de Saint-Exupéry",
-        "taille": 82
+        "auteur": "Antoine de Saint-Exupéry"
     },
     {
         "citation": "La simplicité est la sophistication supreme.",
-        "auteur": "Leonard de Vinci",
-        "taille": 44
+        "auteur": "Leonard de Vinci"
     },
     {
         "citation": "Le bonheur n'est pas une destination à atteindre, mais une façon de voyager.",
-        "auteur": "Margaret Lee Runbeck",
-        "taille": 84
+        "auteur": "Margaret Lee Runbeck"
     },
     {
         "citation": "Il faut toujours viser la lune, car meme en cas d'échec, on atterrit dans les étoiles.",
-        "auteur": "Oscar Wilde",
-        "taille": 93
+        "auteur": "Oscar Wilde"
     },
     {
         "citation": "La meilleure façon de prédire l'avenir, c'est de le créer.",
-        "auteur": "Peter Drucker",
-        "taille": 60
+        "auteur": "Peter Drucker"
     },
     {
         "citation": "Le succès, c'est d'avoir ce que vous voulez. Le bonheur, c'est d'aimer ce que vous avez.",
-        "auteur": "H. Jackson Brown Jr.",
-        "taille": 94
+        "auteur": "H. Jackson Brown Jr."
     },
     {
         "citation": "Le pessimiste se plaint du vent ; l'optimiste espère qu'il va changer ; le réaliste ajuste ses voiles.",
-        "auteur": "William Arthur Ward",
-        "taille": 107
+        "auteur": "William Arthur Ward"
     },
     {
         "citation": "Le meilleur moment pour planter un arbre était il y a 20 ans. Le deuxième meilleur moment est maintenant.",
-        "auteur": "Proverbe chinois",
-        "taille": 98
+        "auteur": "Proverbe chinois"
+    },
+    {
+        "citation": "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
+        "auteur": "Steve Jobs"
     }
 ]
-  

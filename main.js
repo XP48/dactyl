@@ -36,7 +36,7 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
             document.getElementById('cita-select').innerHTML += `<option value="${data[nb].auteur}">${data[nb].auteur}</option>`
         }
         document.getElementById('sujet').innerHTML += `<p class="cit">”</p>`
-        document.getElementById('infos').textContent = `${citation.auteur} | ${citation.taille} caractères.`
+        document.getElementById('infos').textContent = `${citation.auteur} | ${citation.citation.length} caractères.`
 
         console.log(etapes)
 
