@@ -49,6 +49,7 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     z-index: 99;
+    font-weight: 500;
 }
 #sujet {
     color: #8e8e8e;
@@ -99,5 +100,37 @@
     font-weight: bold;
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 10%;
 }
+#result {
+    color: #f1f1f1;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: xx-large;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10%;
+}
+/* #s0:before{ 
+    content: ""; 
+    width: 3px; 
+    height: 3rem; 
+    display: inline-block;      
+    background: #f1f1f1;
+    animation: clignote 1s infinite linear;
+} */
+.cursor:before{ 
+    content: ""; 
+    width: 3px; 
+    height: 3rem; 
+    display: inline-block;      
+    background: #f1f1f1;
+    animation: clignote 1s infinite linear;
+}
+@keyframes clignote {
+    from{ 
+          opacity: 0; 
+        }      
+    to{ 
+          opacity: 1;
+         }    
+   }

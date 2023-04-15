@@ -16,30 +16,34 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
     let etapes = 0
     let nb_etape = 0
     let animationduration = 0.1
-    let started = false
+    let started
     let debut = 0
+    let exo
+    let fautes
 
     function display(nb_cita) {
 
+        started = false
         nb_etape = 0
         let citation = data[nb_cita]
-        let exo = citation.citation
+        exo = citation.citation
         etapes = exo.split('')
-
-    
+        fautes = 0
+        
+        
         document.getElementById('sujet').innerHTML = '<p class="cit">“</p>'
         for (let nb = 0; nb < (etapes.length); nb++){
-            document.getElementById('sujet').innerHTML += `<span id='${nb}'>${etapes[nb]}</span>`
+            document.getElementById('sujet').innerHTML += `<span id='s${nb}'>${etapes[nb]}</span>`
         }
+        document.getElementById('sujet').innerHTML += `<span id='s${etapes.length}'></span>`
         document.getElementById('cita-select').innerHTML = `<option value="">${citation.auteur}</option>`
         for (let nb = 0; nb < data.length; nb++){
             document.getElementById('cita-select').innerHTML += `<option value="${data[nb].auteur}">${data[nb].auteur}</option>`
         }
+        document.getElementById('s0').classList.add("cursor")
         document.getElementById('sujet').innerHTML += `<p class="cit">”</p>`
-        document.getElementById('infos').textContent = `${citation.auteur} | ${citation.citation.length} caractères.`
-
-        console.log(etapes)
-
+        document.getElementById('infos').textContent = `${citation.auteur} | ${exo.length} caractères`
+        document.getElementById('result').textContent = ''
     }
 
     
@@ -48,24 +52,27 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
         if(started == false){
             debut = new Date()
             started = true
+            // document.getElementById('s0').classList.remove("cursor")
         }
         if(event.keyCode !== keysByLetter[etapes[0]] && Object.values(keysByLetter).includes(event.keyCode) ){
             document.getElementById('sujet').style.animation = `erreur ${animationduration}s linear 1`
+            fautes ++
         }
         document.getElementById("sujet").addEventListener("animationend", function() {
             document.getElementById('sujet').style.animation = null;
         });
         if(event.keyCode === keysByLetter[etapes[0]]){
-            document.getElementById(`${nb_etape}`).style.color = '#f1f1f1'
+            document.getElementById(`s${nb_etape}`).style.color = '#f1f1f1'
+            document.getElementById(`s${nb_etape}`).classList.remove("cursor")
+            document.getElementById(`s${nb_etape+1}`).classList.add("cursor")
             etapes.shift()
             if(etapes.length === 0){
                 const fin = new Date()
-                const perf = (fin - debut)/1000
-                alert(`Vous avez mis ${perf}s !`)
+                const perf = (fin - debut)/60000
+                document.getElementById('result').textContent = `${fautes} faute(s) | Vitesse de frappe : ${Math.floor(Math.floor((exo.length)/5) / perf)} mpm`;
             }
             nb_etape++
         }
-        console.log(keysByLetter[etapes[0]])
     });
     
     display(nb_random(0, data.length))
@@ -76,6 +83,7 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
             document.getElementById("sujet").style.color = event.target.value;            
             document.getElementById("cita-select").style.backgroundColor = event.target.value; 
             document.getElementById('infos').style.color = event.target.value;
+            document.getElementById('result').style.color = event.target.value;
         }
         if(event.target.name === "couleur-fond") {
             document.getElementById("container").style.backgroundColor = event.target.value;
