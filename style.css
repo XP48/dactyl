@@ -30,7 +30,7 @@
         transform: rotate(-10deg);
     }
 }
-.phrase {
+#phrase {
     width: 90vw;
     text-align: center;
     display: flex;
@@ -38,6 +38,17 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    z-index: 98;
+}
+#focus {
+    display: none;
+    position: absolute;
+    top: 50%;
+    color: #f1f1f1;
+    font-size: xx-large;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    z-index: 99;
 }
 #sujet {
     color: #8e8e8e;
@@ -52,6 +63,7 @@
     background-color: #8e8e8e;
     color: #2b2b2b;
     border: none;
+    font-family: 'Courier New', Courier, monospace;
 }
 #cool-pol {
     position: absolute;

@@ -74,13 +74,14 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
     document.addEventListener("input", function(event) {
         if(event.target.name === "couleur-police") {
             document.getElementById("sujet").style.color = event.target.value;            
+            document.getElementById("cita-select").style.backgroundColor = event.target.value; 
+            document.getElementById('infos').style.color = event.target.value;
         }
         if(event.target.name === "couleur-fond") {
-            document.getElementById("container").style.backgroundColor = event.target.value;    
-            document.getElementById("cita-select").style.backgroundColor = event.target.value; 
+            document.getElementById("container").style.backgroundColor = event.target.value;
+            document.getElementById("cita-select").style.color = event.target.value;     
         }
         display(data.findIndex(elem => elem.auteur === event.target.value))
     });
 
 }).catch(error => console.log(error))
-
