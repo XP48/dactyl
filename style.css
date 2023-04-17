@@ -38,7 +38,7 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    z-index: 98;
+    /* z-index: 1; */
 }
 #focus {
     display: none;
@@ -48,7 +48,7 @@
     font-size: xx-large;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    z-index: 99;
+    /* z-index: 2; */
     font-weight: 500;
 }
 #sujet {
@@ -133,9 +133,47 @@
 }
 @keyframes clignote {
     from{ 
-          opacity: 0; 
-        }      
+        opacity: 0; 
+    }      
     to{ 
-          opacity: 1;
-         }    
-   }
+        opacity: 1;
+    }    
+}
+#loader {
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    position: absolute;
+    outline: none;
+    border: none;
+    background-color: #2b2b2b;
+}
+#loading {
+    position: absolute;
+    z-index: 100;
+    color: #f1f1f1;
+    font-size: xx-large;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    bottom: 1%;
+    
+}
+#point:first-child {
+    animation: clignote 2s 3 linear;
+}
+#point:nth-child(2) {
+    animation: clignote 2s 3 linear;
+    animation-delay: 0.3s;
+}
+#point:last-child {
+    animation: clignote 2s 3 linear;
+    animation-delay: 0.6s;
+}
+@keyframes disparition{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}

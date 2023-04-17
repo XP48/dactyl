@@ -1,3 +1,7 @@
+window.addEventListener('load', function() {
+    document.getElementById("loader").play()
+})
+
 const keysByLetter = {
     'a': 65, 'à': 48, 'b': 66, 'c': 67, 'ç': 57, 'd': 68, 'e': 69, 'é': 50, 'è': 55, 'f': 70, 'g': 71, 'h': 72, 'i': 73, 'j': 74,
     'k': 75, 'l': 76, 'm': 77, 'n': 78, 'o': 79, 'p': 80, 'q': 81, 'r': 82, 's': 83, 't': 84,
@@ -75,7 +79,17 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
         }
     });
     
-    display(nb_random(0, data.length))
+    setTimeout(() => {
+        document.getElementById("loader").style.animation = 'disparition 0.7s 1 linear'
+        document.getElementById("loading").style.animation = 'disparition 0.7s 1 linear'
+        document.getElementById("loading").addEventListener("animationend", function() {
+            this.style.display = 'none';
+        });
+        document.getElementById("loader").addEventListener("animationend", function() {
+            this.style.display = 'none';
+        });
+        display(nb_random(0, data.length))
+      }, 4000);
 
     
     document.addEventListener("input", function(event) {
