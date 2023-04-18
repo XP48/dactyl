@@ -1,7 +1,3 @@
-window.addEventListener('load', function() {
-    document.getElementById("loader").play()
-})
-
 const keysByLetter = {
     'a': 65, 'à': 48, 'b': 66, 'c': 67, 'ç': 57, 'd': 68, 'e': 69, 'é': 50, 'è': 55, 'f': 70, 'g': 71, 'h': 72, 'i': 73, 'j': 74,
     'k': 75, 'l': 76, 'm': 77, 'n': 78, 'o': 79, 'p': 80, 'q': 81, 'r': 82, 's': 83, 't': 84,
@@ -104,6 +100,10 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
             document.getElementById("cita-select").style.color = event.target.value;     
         }
         display(data.findIndex(elem => elem.auteur === event.target.value))
+    });
+    document.getElementById("again").addEventListener("click", function() {
+        display(nb_random(0, data.length))
+        this.style.display = "none"
     });
 
 }).catch(error => console.log(error))
