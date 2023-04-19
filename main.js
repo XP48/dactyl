@@ -103,7 +103,6 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
     });
     document.getElementById("again").addEventListener("click", function() {
         display(nb_random(0, data.length))
-        this.style.display = "none"
     });
 
 }).catch(error => console.log(error))
