@@ -13,6 +13,11 @@ document.getElementById("cool-fond").addEventListener("focus", function(event) {
     document.getElementById("focus").style.display = 'flex';
 });
 
+document.getElementById("again").addEventListener("focus", function(event) {
+    document.getElementById("phrase").style.filter = 'blur(3px)';
+    document.getElementById("focus").style.display = 'flex';
+});
+
 document.getElementById("cool-pol").addEventListener("blur", function(event) {
     document.getElementById("phrase").style.filter = 'blur(0)';
     document.getElementById("focus").style.display = 'none';
@@ -25,6 +30,11 @@ document.getElementById("cita-select").addEventListener("blur", function(event) 
 });
 
 document.getElementById("cool-fond").addEventListener("blur", function(event) {
+    document.getElementById("phrase").style.filter = 'blur(0)';
+    document.getElementById("focus").style.display = 'none';
+});
+
+document.getElementById("again").addEventListener("blur", function(event) {
     document.getElementById("phrase").style.filter = 'blur(0)';
     document.getElementById("focus").style.display = 'none';
 });
