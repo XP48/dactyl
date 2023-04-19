@@ -7,6 +7,8 @@ const keysByLetter = {
     'Y': 89, 'Z': 90, ' ': 32, ',': 188, '.': 190, ';': 190, '-': 54, '!': 223, '?': 191, "'": 52
   };
 
+const son = new Audio("./src/audio/touche.mp3")
+
 function nb_random(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -63,6 +65,8 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
         });
         if(event.keyCode === keysByLetter[etapes[0]]){
             document.getElementById(`s${nb_etape}`).style.color = '#f1f1f1'
+            son.pause();
+            son.play();
             document.getElementById(`s${nb_etape}`).classList.remove("cursor")
             document.getElementById(`s${nb_etape+1}`).classList.add("cursor")
             etapes.shift()
@@ -86,7 +90,6 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
         });
         display(nb_random(0, data.length))
       }, 4000);
-
     
     document.addEventListener("input", function(event) {
         if(event.target.name === "couleur-police") {
@@ -94,6 +97,7 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
             document.getElementById("cita-select").style.backgroundColor = event.target.value; 
             document.getElementById('infos').style.color = event.target.value;
             document.getElementById('result').style.color = event.target.value;
+            document.getElementById('again').style.color = event.target.value
         }
         if(event.target.name === "couleur-fond") {
             document.getElementById("container").style.backgroundColor = event.target.value;
@@ -102,7 +106,7 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
         display(data.findIndex(elem => elem.auteur === event.target.value))
     });
     document.getElementById("again").addEventListener("click", function() {
-        display(nb_random(0, data.length))
+        display(nb_random(0, data.length));
     });
 
 }).catch(error => console.log(error))

@@ -130,14 +130,6 @@
     position: absolute;
     bottom: 10%;
 }
-/* #s0:before{ 
-    content: ""; 
-    width: 3px; 
-    height: 3rem; 
-    display: inline-block;      
-    background: #f1f1f1;
-    animation: clignote 1s infinite linear;
-} */
 .cursor:before{ 
     content: ""; 
     width: 3px; 
@@ -167,7 +159,8 @@
     background-color: #292929;
 }
 #loader-img {
-    max-height: 70%;
+    max-height: 20%;
+    border: none;
 }
 #loading {
     position: absolute;
@@ -177,7 +170,6 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     bottom: 1%;
-    
 }
 #point:first-child {
     animation: clignote 2s 3 linear;
