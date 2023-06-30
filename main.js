@@ -50,7 +50,6 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
 
     
     document.addEventListener('keydown', function(event) {
-        console.log(event.keyCode)
         if(started == false){
             debut = new Date()
             started = true
