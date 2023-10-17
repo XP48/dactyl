@@ -22,6 +22,7 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
     let debut = 0
     let exo
     let fautes
+    let sound = false
 
     function display(nb_cita) {
 
@@ -64,8 +65,10 @@ fetch('citations.json').then(reponse => reponse.json()).then(data => {
         });
         if(event.keyCode === keysByLetter[etapes[0]]){
             document.getElementById(`s${nb_etape}`).style.color = '#f1f1f1'
-            son.pause();
-            son.play();
+            if(sound){
+                son.pause();
+                son.play();
+            }
             document.getElementById(`s${nb_etape}`).classList.remove("cursor")
             document.getElementById(`s${nb_etape+1}`).classList.add("cursor")
             etapes.shift()
